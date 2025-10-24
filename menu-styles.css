@@ -1,8 +1,121 @@
 /* Menu Page Specific Styles */
 .menu-body {
-    background: #2c2c2c;
+    background: linear-gradient(-45deg, #0a0a0a, #1a1a1a, #2a2a2a, #0f0f0f);
+    background-size: 400% 400%;
+    animation: urbanGradient 6s ease infinite;
     color: #333;
     font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    overflow-x: hidden;
+}
+
+@keyframes urbanGradient {
+    0% {
+        background-position: 0% 50%;
+        filter: hue-rotate(0deg);
+    }
+    25% {
+        background-position: 100% 50%;
+        filter: hue-rotate(90deg);
+    }
+    50% {
+        background-position: 100% 100%;
+        filter: hue-rotate(180deg);
+    }
+    75% {
+        background-position: 0% 100%;
+        filter: hue-rotate(270deg);
+    }
+    100% {
+        background-position: 0% 50%;
+        filter: hue-rotate(360deg);
+    }
+}
+
+/* Efecto urbano de neón y glitch */
+.menu-body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 0, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(0, 255, 0, 0.15) 0%, transparent 50%),
+        linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.05) 50%, transparent 70%);
+    animation: urbanGlitch 4s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.menu-body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 255, 255, 0.03) 2px,
+            rgba(0, 255, 255, 0.03) 4px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 0, 255, 0.03) 2px,
+            rgba(255, 0, 255, 0.03) 4px
+        );
+    animation: scanLines 2s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes urbanGlitch {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1) rotate(0deg) skew(0deg);
+        filter: hue-rotate(0deg) brightness(1);
+    }
+    25% {
+        opacity: 0.8;
+        transform: scale(1.2) rotate(5deg) skew(2deg);
+        filter: hue-rotate(90deg) brightness(1.5);
+    }
+    50% {
+        opacity: 0.4;
+        transform: scale(0.8) rotate(-5deg) skew(-2deg);
+        filter: hue-rotate(180deg) brightness(0.8);
+    }
+    75% {
+        opacity: 0.9;
+        transform: scale(1.1) rotate(3deg) skew(1deg);
+        filter: hue-rotate(270deg) brightness(1.2);
+    }
+}
+
+@keyframes scanLines {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(100%);
+        opacity: 0.3;
+    }
 }
 
 .menu-container {
@@ -123,41 +236,327 @@
 }
 
 .menu-section {
-    background: #f5f5f5;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
+    border: 2px solid transparent;
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
+    box-shadow: 
+        0 0 20px rgba(0, 255, 255, 0.3),
+        0 0 40px rgba(255, 0, 255, 0.2),
+        inset 0 0 20px rgba(0, 255, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    animation: urbanFloat 4s ease-in-out infinite;
+    animation-delay: calc(var(--section-index) * 0.5s);
+}
+
+.menu-section::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #00ffff, #ff00ff, #00ff00, #ffff00);
+    border-radius: 15px;
+    z-index: -1;
+    animation: neonBorder 3s linear infinite;
+}
+
+@keyframes neonBorder {
+    0% {
+        background: linear-gradient(45deg, #00ffff, #ff00ff, #00ff00, #ffff00);
+    }
+    25% {
+        background: linear-gradient(45deg, #ff00ff, #00ff00, #ffff00, #00ffff);
+    }
+    50% {
+        background: linear-gradient(45deg, #00ff00, #ffff00, #00ffff, #ff00ff);
+    }
+    75% {
+        background: linear-gradient(45deg, #ffff00, #00ffff, #ff00ff, #00ff00);
+    }
+    100% {
+        background: linear-gradient(45deg, #00ffff, #ff00ff, #00ff00, #ffff00);
+    }
+}
+
+.menu-section:nth-child(1) { --section-index: 0; }
+.menu-section:nth-child(2) { --section-index: 1; }
+
+@keyframes urbanFloat {
+    0%, 100% {
+        transform: translateY(0px) rotateX(0deg);
+        box-shadow: 
+            0 0 20px rgba(0, 255, 255, 0.3),
+            0 0 40px rgba(255, 0, 255, 0.2),
+            inset 0 0 20px rgba(0, 255, 0, 0.1);
+    }
+    25% {
+        transform: translateY(-2px) rotateX(2deg);
+        box-shadow: 
+            0 0 30px rgba(255, 0, 255, 0.4),
+            0 0 50px rgba(0, 255, 0, 0.3),
+            inset 0 0 25px rgba(0, 255, 255, 0.2);
+    }
+    50% {
+        transform: translateY(-4px) rotateX(0deg);
+        box-shadow: 
+            0 0 25px rgba(0, 255, 0, 0.5),
+            0 0 45px rgba(255, 255, 0, 0.3),
+            inset 0 0 30px rgba(255, 0, 255, 0.2);
+    }
+    75% {
+        transform: translateY(-2px) rotateX(-2deg);
+        box-shadow: 
+            0 0 35px rgba(255, 255, 0, 0.4),
+            0 0 55px rgba(0, 255, 255, 0.3),
+            inset 0 0 25px rgba(0, 255, 0, 0.2);
+    }
 }
 
 .menu-section:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px) scale(1.05) rotateX(5deg);
+    box-shadow: 
+        0 0 50px rgba(0, 255, 255, 0.6),
+        0 0 80px rgba(255, 0, 255, 0.4),
+        0 0 100px rgba(0, 255, 0, 0.3),
+        inset 0 0 40px rgba(255, 255, 0, 0.2);
+    animation-play-state: paused;
+}
+
+/* Estilos modernos para sabores flotantes */
+.menu-section .section-header.cocteles {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-section .section-header.cocteles::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+}
+
+.menu-section .section-content {
+    position: relative;
+    z-index: 2;
+}
+
+.menu-item {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    padding: 8px 12px;
+}
+
+.menu-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.menu-item:hover::before {
+    left: 100%;
+}
+
+.menu-item:hover {
+    background: rgba(102, 126, 234, 0.1);
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+}
+
+.menu-item .item-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.menu-item .item-name {
+    position: relative;
+    z-index: 2;
+    font-weight: 700;
+    color: #2c2c2c;
+    transition: color 0.3s ease;
+    font-size: 1.1rem;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+}
+
+.menu-item .item-ingredients {
+    position: relative;
+    z-index: 2;
+    font-size: 0.9rem;
+    color: #555;
+    font-weight: 400;
+    transition: color 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.3px;
+    line-height: 1.3;
+}
+
+.menu-item:hover .item-name {
+    color: #667eea;
+}
+
+.menu-item:hover .item-ingredients {
+    color: #764ba2;
+}
+
+.menu-item .price {
+    position: relative;
+    z-index: 2;
+    font-weight: 800;
+    color: #667eea;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+.menu-item:hover .price {
+    color: #764ba2;
+    transform: scale(1.1);
+}
+
+/* Efectos flotantes modernos para sabores */
+.menu-section .section-header.cocteles h3 {
+    position: relative;
+    z-index: 3;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+.menu-section .section-content .menu-item {
+    animation: floatItem 8s ease-in-out infinite;
+    animation-delay: calc(var(--item-index) * 0.5s);
+}
+
+@keyframes floatItem {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-2px) rotate(0.5deg);
+    }
+    50% {
+        transform: translateY(-1px) rotate(0deg);
+    }
+    75% {
+        transform: translateY(-3px) rotate(-0.5deg);
+    }
+}
+
+.menu-section .section-content .menu-item:nth-child(1) { --item-index: 0; }
+.menu-section .section-content .menu-item:nth-child(2) { --item-index: 1; }
+.menu-section .section-content .menu-item:nth-child(3) { --item-index: 2; }
+.menu-section .section-content .menu-item:nth-child(4) { --item-index: 3; }
+.menu-section .section-content .menu-item:nth-child(5) { --item-index: 4; }
+.menu-section .section-content .menu-item:nth-child(6) { --item-index: 5; }
+
+/* Efecto de partículas flotantes */
+.menu-section .section-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 80%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    animation: particleFloat 10s ease-in-out infinite;
+}
+
+@keyframes particleFloat {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.05);
+    }
 }
 
 /* Section Headers */
 .section-header {
     padding: 15px 20px;
     color: white;
-    font-weight: 600;
-    font-size: 1.2rem;
+    font-weight: 700;
+    font-size: 1.3rem;
     text-align: center;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .section-header.granizados {
-    background: #ff6b9d;
+    background: linear-gradient(45deg, #ff6b9d, #ff8fab, #ff6b9d);
+    background-size: 200% 200%;
+    animation: colorShift 4s ease infinite;
 }
 
 .section-header.cocteles {
-    background: #4ecdc4;
+    background: linear-gradient(45deg, #4ecdc4, #6dd5ed, #4ecdc4);
+    background-size: 200% 200%;
+    animation: colorShift 4s ease infinite;
 }
 
 .section-header.sodas {
-    background: #45b7d1;
+    background: linear-gradient(45deg, #45b7d1, #74b9ff, #45b7d1);
+    background-size: 200% 200%;
+    animation: colorShift 4s ease infinite;
 }
 
 .section-header.casa {
-    background: #f9ca24;
+    background: linear-gradient(45deg, #f9ca24, #fdcb6e, #f9ca24);
+    background-size: 200% 200%;
+    animation: colorShift 4s ease infinite;
     color: #333;
+}
+
+@keyframes colorShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* Section Content */
