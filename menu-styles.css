@@ -655,6 +655,22 @@
     box-shadow: 0 4px 15px rgba(74, 158, 255, 0.5);
 }
 
+/* Hover que respeta los estados activos */
+.section-alcohol-btn:hover {
+    transform: translateY(-1px);
+}
+
+.section-alcohol-btn.inactivo:hover {
+    background: #777;
+    border-color: #777;
+}
+
+.section-alcohol-btn.activo:hover {
+    background: #5ba8ff;
+    border-color: #5ba8ff;
+    box-shadow: 0 6px 20px rgba(74, 158, 255, 0.6);
+}
+
 
 .section-alcohol-btn .btn-icon {
     font-size: 1.2rem;

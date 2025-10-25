@@ -2,6 +2,9 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Button script with hash loaded');
     
+    let lastClickTime = 0;
+    const CLICK_DEBOUNCE = 300; // 300ms entre clicks
+    
     // Función para resetear todos los botones
     function resetAllButtons() {
         const buttons = document.querySelectorAll('.section-alcohol-btn');
@@ -56,10 +59,35 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Initial state set based on hash');
     }, 100);
     
-    // Event listeners para botones
+    // Event listeners para botones con prevención de doble click
     document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('section-alcohol-btn')) {
-            const type = e.target.getAttribute('data-type');
+        // Buscar el botón padre si se clickeó en un elemento hijo
+        let button = e.target;
+        while (button && !button.classList.contains('section-alcohol-btn')) {
+            button = button.parentElement;
+        }
+        
+        if (button && button.classList.contains('section-alcohol-btn')) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const currentTime = Date.now();
+            
+            // Debounce: prevenir clicks muy rápidos
+            if (currentTime - lastClickTime < CLICK_DEBOUNCE) {
+                console.log('Click too fast, ignoring');
+                return;
+            }
+            lastClickTime = currentTime;
+            
+            const type = button.getAttribute('data-type');
+            console.log('Button clicked, type:', type, 'target:', e.target);
+            
+            // Prevenir doble click
+            if (button.classList.contains('activo')) {
+                console.log('Button already active, ignoring click');
+                return;
+            }
             
             // Cambiar hash en la URL
             window.location.hash = type;
