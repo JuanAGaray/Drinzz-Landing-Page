@@ -210,32 +210,84 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Menu toggle functionality
-    const toggleButtons = document.querySelectorAll('.toggle-btn');
+    const toggleButtons = document.querySelectorAll('.section-alcohol-btn');
     const menuSinAlcohol = document.getElementById('menu-sin-alcohol');
     const menuConAlcohol = document.getElementById('menu-con-alcohol');
-    const alcoholBadge = document.getElementById('alcohol-badge');
+    const flavorsSinAlcohol = document.getElementById('flavors-sin-alcohol');
+    const flavorsConAlcohol = document.getElementById('flavors-con-alcohol');
+    const granizadosTitle = document.getElementById('granizados-title');
+    const granizadosTitleCon = document.getElementById('granizados-title-con');
+
+    // Set initial state - show "Con Alcohol" by default
+    if (menuConAlcohol) {
+        menuConAlcohol.style.display = 'grid';
+    }
+    if (menuSinAlcohol) {
+        menuSinAlcohol.style.display = 'none';
+    }
+
+    // Set initial active button state
+    setTimeout(() => {
+        // Remove active class from all buttons first
+        toggleButtons.forEach(btn => {
+            btn.classList.remove('active');
+            btn.style.background = '#666';
+            btn.style.borderColor = '#666';
+        });
+        
+        // Add active class to "Con Alcohol" buttons
+        const conAlcoholButtons = document.querySelectorAll('.con-alcohol-btn');
+        conAlcoholButtons.forEach(btn => {
+            btn.classList.add('active');
+            btn.style.background = '#4a9eff';
+            btn.style.borderColor = '#4a9eff';
+            console.log('Added active class to:', btn);
+        });
+    }, 200);
 
     if (toggleButtons.length > 0) {
         toggleButtons.forEach(button => {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
                 const type = this.getAttribute('data-type');
+                console.log('Button clicked:', type);
                 
-                // Remove active class from all buttons
-                toggleButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active class to clicked button
+                // Remove active class from all buttons and set to gray
+                toggleButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.style.background = '#666';
+                    btn.style.borderColor = '#666';
+                });
+                
+                // Add active class to clicked button and set to blue
                 this.classList.add('active');
+                this.style.background = '#4a9eff';
+                this.style.borderColor = '#4a9eff';
+                console.log('Active class added to:', this);
                 
                 // Show/hide appropriate menu
                 if (type === 'sin-alcohol') {
                     menuSinAlcohol.style.display = 'grid';
                     menuConAlcohol.style.display = 'none';
-                    alcoholBadge.textContent = 'sin alcohol';
-                    alcoholBadge.classList.remove('alcohol');
+                    
+                    // Update titles
+                    if (granizadosTitle) granizadosTitle.textContent = 'Granizados Sin Alcohol';
+                    if (granizadosTitleCon) granizadosTitleCon.textContent = 'Granizados Sin Alcohol';
+                    
+                    // Show sin alcohol flavors, hide con alcohol flavors
+                    if (flavorsSinAlcohol) flavorsSinAlcohol.style.display = 'block';
+                    if (flavorsConAlcohol) flavorsConAlcohol.style.display = 'none';
                 } else if (type === 'con-alcohol') {
                     menuSinAlcohol.style.display = 'none';
                     menuConAlcohol.style.display = 'grid';
-                    alcoholBadge.textContent = 'con alcohol';
-                    alcoholBadge.classList.add('alcohol');
+                    
+                    // Update titles
+                    if (granizadosTitle) granizadosTitle.textContent = 'Granizados Con Alcohol';
+                    if (granizadosTitleCon) granizadosTitleCon.textContent = 'Granizados Con Alcohol';
+                    
+                    // Show con alcohol flavors, hide sin alcohol flavors
+                    if (flavorsSinAlcohol) flavorsSinAlcohol.style.display = 'none';
+                    if (flavorsConAlcohol) flavorsConAlcohol.style.display = 'block';
                 }
                 
                 // Add smooth transition effect

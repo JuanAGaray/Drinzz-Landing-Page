@@ -1,9 +1,7 @@
 /* Menu Page Specific Styles */
 .menu-body {
-    background: linear-gradient(-45deg, #0a0a0a, #1a1a1a, #2a2a2a, #0f0f0f);
-    background-size: 400% 400%;
-    animation: urbanGradient 6s ease infinite;
-    color: #333;
+    background: #1a1a1a;
+    color: #fff;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     line-height: 1.6;
@@ -16,27 +14,27 @@
 @keyframes urbanGradient {
     0% {
         background-position: 0% 50%;
-        filter: hue-rotate(0deg);
+        filter: hue-rotate(0deg) saturate(1) brightness(1);
     }
     25% {
         background-position: 100% 50%;
-        filter: hue-rotate(90deg);
+        filter: hue-rotate(15deg) saturate(1.1) brightness(1.05);
     }
     50% {
         background-position: 100% 100%;
-        filter: hue-rotate(180deg);
+        filter: hue-rotate(30deg) saturate(1.2) brightness(1.1);
     }
     75% {
         background-position: 0% 100%;
-        filter: hue-rotate(270deg);
+        filter: hue-rotate(15deg) saturate(1.1) brightness(1.05);
     }
     100% {
         background-position: 0% 50%;
-        filter: hue-rotate(360deg);
+        filter: hue-rotate(0deg) saturate(1) brightness(1);
     }
 }
 
-/* Efecto urbano de neón y glitch */
+/* Efecto urbano elegante */
 .menu-body::before {
     content: '';
     position: fixed;
@@ -45,11 +43,11 @@
     width: 100%;
     height: 100%;
     background: 
-        radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 0, 255, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(0, 255, 0, 0.15) 0%, transparent 50%),
-        linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.05) 50%, transparent 70%);
-    animation: urbanGlitch 4s ease-in-out infinite;
+        radial-gradient(circle at 20% 80%, rgba(100, 149, 237, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(70, 130, 180, 0.1) 0%, transparent 50%),
+        linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.03) 50%, transparent 70%);
+    animation: elegantGlow 6s ease-in-out infinite;
     pointer-events: none;
     z-index: -1;
 }
@@ -81,26 +79,31 @@
     z-index: -1;
 }
 
-@keyframes urbanGlitch {
-    0%, 100% {
+@keyframes elegantGlow {
+    0% {
         opacity: 0.3;
-        transform: scale(1) rotate(0deg) skew(0deg);
-        filter: hue-rotate(0deg) brightness(1);
+        transform: scale(1) rotate(0deg);
+        filter: hue-rotate(0deg) brightness(1) saturate(1);
     }
     25% {
-        opacity: 0.8;
-        transform: scale(1.2) rotate(5deg) skew(2deg);
-        filter: hue-rotate(90deg) brightness(1.5);
+        opacity: 0.5;
+        transform: scale(1.05) rotate(1deg);
+        filter: hue-rotate(10deg) brightness(1.1) saturate(1.1);
     }
     50% {
         opacity: 0.4;
-        transform: scale(0.8) rotate(-5deg) skew(-2deg);
-        filter: hue-rotate(180deg) brightness(0.8);
+        transform: scale(0.95) rotate(-1deg);
+        filter: hue-rotate(20deg) brightness(0.95) saturate(1.05);
     }
     75% {
-        opacity: 0.9;
-        transform: scale(1.1) rotate(3deg) skew(1deg);
-        filter: hue-rotate(270deg) brightness(1.2);
+        opacity: 0.6;
+        transform: scale(1.02) rotate(0.5deg);
+        filter: hue-rotate(10deg) brightness(1.05) saturate(1.1);
+    }
+    100% {
+        opacity: 0.3;
+        transform: scale(1) rotate(0deg);
+        filter: hue-rotate(0deg) brightness(1) saturate(1);
     }
 }
 
@@ -130,6 +133,66 @@
     text-align: center;
     margin-bottom: 30px;
     position: relative;
+}
+
+.menu-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.alcohol-toggle {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.alcohol-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: #f5f5f5;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.alcohol-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.alcohol-btn.active {
+    background: #ff6b9d;
+    border-color: #ff6b9d;
+    color: white;
+}
+
+.alcohol-btn.sin-alcohol-btn.active {
+    background: #4a9eff;
+    border-color: #4a9eff;
+}
+
+.alcohol-btn.con-alcohol-btn.active {
+    background: #ff6b9d;
+    border-color: #ff6b9d;
+}
+
+.btn-icon {
+    font-size: 1.2rem;
+}
+
+.btn-text {
+    font-size: 0.85rem;
+    font-weight: 600;
 }
 
 .back-button {
@@ -222,7 +285,7 @@
 }
 
 .toggle-btn.active {
-    background: linear-gradient(45deg, #ff6b9d, #4ecdc4);
+    background: #ff6b9d;
     border-color: transparent;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
@@ -236,111 +299,97 @@
 }
 
 .menu-section {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
-    border: 2px solid transparent;
+    background: #2c2c2c;
+    border: 1px solid #444;
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 
-        0 0 20px rgba(0, 255, 255, 0.3),
-        0 0 40px rgba(255, 0, 255, 0.2),
-        inset 0 0 20px rgba(0, 255, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
     position: relative;
-    animation: urbanFloat 4s ease-in-out infinite;
-    animation-delay: calc(var(--section-index) * 0.5s);
 }
 
 .menu-section::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, #00ffff, #ff00ff, #00ff00, #ffff00);
-    border-radius: 15px;
-    z-index: -1;
-    animation: neonBorder 3s linear infinite;
+    display: none;
 }
 
-@keyframes neonBorder {
+@keyframes elegantBorder {
     0% {
-        background: linear-gradient(45deg, #00ffff, #ff00ff, #00ff00, #ffff00);
+        background: linear-gradient(45deg, #6495ed, #8a2be2, #4682b4, #6495ed);
     }
     25% {
-        background: linear-gradient(45deg, #ff00ff, #00ff00, #ffff00, #00ffff);
+        background: linear-gradient(45deg, #8a2be2, #4682b4, #6495ed, #8a2be2);
     }
     50% {
-        background: linear-gradient(45deg, #00ff00, #ffff00, #00ffff, #ff00ff);
+        background: linear-gradient(45deg, #4682b4, #6495ed, #8a2be2, #4682b4);
     }
     75% {
-        background: linear-gradient(45deg, #ffff00, #00ffff, #ff00ff, #00ff00);
+        background: linear-gradient(45deg, #6495ed, #8a2be2, #4682b4, #6495ed);
     }
     100% {
-        background: linear-gradient(45deg, #00ffff, #ff00ff, #00ff00, #ffff00);
+        background: linear-gradient(45deg, #6495ed, #8a2be2, #4682b4, #6495ed);
     }
 }
 
 .menu-section:nth-child(1) { --section-index: 0; }
 .menu-section:nth-child(2) { --section-index: 1; }
 
-@keyframes urbanFloat {
-    0%, 100% {
+@keyframes elegantFloat {
+    0% {
         transform: translateY(0px) rotateX(0deg);
         box-shadow: 
-            0 0 20px rgba(0, 255, 255, 0.3),
-            0 0 40px rgba(255, 0, 255, 0.2),
-            inset 0 0 20px rgba(0, 255, 0, 0.1);
+            0 0 20px rgba(100, 149, 237, 0.3),
+            0 0 40px rgba(138, 43, 226, 0.2),
+            inset 0 0 20px rgba(70, 130, 180, 0.1);
     }
     25% {
-        transform: translateY(-2px) rotateX(2deg);
+        transform: translateY(-2px) rotateX(1deg);
         box-shadow: 
-            0 0 30px rgba(255, 0, 255, 0.4),
-            0 0 50px rgba(0, 255, 0, 0.3),
-            inset 0 0 25px rgba(0, 255, 255, 0.2);
+            0 0 25px rgba(138, 43, 226, 0.35),
+            0 0 45px rgba(70, 130, 180, 0.25),
+            inset 0 0 25px rgba(100, 149, 237, 0.15);
     }
     50% {
-        transform: translateY(-4px) rotateX(0deg);
+        transform: translateY(-3px) rotateX(0deg);
         box-shadow: 
-            0 0 25px rgba(0, 255, 0, 0.5),
-            0 0 45px rgba(255, 255, 0, 0.3),
-            inset 0 0 30px rgba(255, 0, 255, 0.2);
+            0 0 30px rgba(70, 130, 180, 0.4),
+            0 0 50px rgba(100, 149, 237, 0.3),
+            inset 0 0 30px rgba(138, 43, 226, 0.2);
     }
     75% {
-        transform: translateY(-2px) rotateX(-2deg);
+        transform: translateY(-2px) rotateX(-1deg);
         box-shadow: 
-            0 0 35px rgba(255, 255, 0, 0.4),
-            0 0 55px rgba(0, 255, 255, 0.3),
-            inset 0 0 25px rgba(0, 255, 0, 0.2);
+            0 0 25px rgba(100, 149, 237, 0.35),
+            0 0 45px rgba(138, 43, 226, 0.25),
+            inset 0 0 25px rgba(70, 130, 180, 0.15);
+    }
+    100% {
+        transform: translateY(0px) rotateX(0deg);
+        box-shadow: 
+            0 0 20px rgba(100, 149, 237, 0.3),
+            0 0 40px rgba(138, 43, 226, 0.2),
+            inset 0 0 20px rgba(70, 130, 180, 0.1);
     }
 }
 
 .menu-section:hover {
-    transform: translateY(-10px) scale(1.05) rotateX(5deg);
+    transform: translateY(-8px) scale(1.03) rotateX(3deg);
     box-shadow: 
-        0 0 50px rgba(0, 255, 255, 0.6),
-        0 0 80px rgba(255, 0, 255, 0.4),
-        0 0 100px rgba(0, 255, 0, 0.3),
-        inset 0 0 40px rgba(255, 255, 0, 0.2);
+        0 0 40px rgba(100, 149, 237, 0.5),
+        0 0 60px rgba(138, 43, 226, 0.3),
+        0 0 80px rgba(70, 130, 180, 0.2),
+        inset 0 0 30px rgba(100, 149, 237, 0.15);
     animation-play-state: paused;
 }
 
 /* Estilos modernos para sabores flotantes */
 .menu-section .section-header.cocteles {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #4ecdc4;
     position: relative;
     overflow: hidden;
 }
 
 .menu-section .section-header.cocteles::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    animation: shimmer 3s infinite;
+    display: none;
 }
 
 @keyframes shimmer {
@@ -397,7 +446,7 @@
     position: relative;
     z-index: 2;
     font-weight: 700;
-    color: #2c2c2c;
+    color: #fff;
     transition: color 0.3s ease;
     font-size: 1.1rem;
     font-family: 'Poppins', sans-serif;
@@ -409,7 +458,7 @@
     position: relative;
     z-index: 2;
     font-size: 0.9rem;
-    color: #555;
+    color: #ccc;
     font-weight: 400;
     transition: color 0.3s ease;
     font-family: 'Poppins', sans-serif;
@@ -429,11 +478,57 @@
     position: relative;
     z-index: 2;
     font-weight: 800;
-    color: #667eea;
+    color: #ff6b9d;
     transition: all 0.3s ease;
     font-family: 'Poppins', sans-serif;
     font-size: 1.1rem;
     letter-spacing: 0.5px;
+}
+
+/* Sabores flotantes dentro de los items */
+.item-flavors-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #414141;
+    justify-content: center;
+}
+
+.flavor-bubble {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    color: #333;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.flavor-bubble:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.flavor-bubble .flavor-icon {
+    font-size: 1.2rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.flavor-bubble .flavor-name {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .menu-item:hover .price {
@@ -487,16 +582,7 @@
 
 /* Efecto de partículas flotantes */
 .menu-section .section-content::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 20% 80%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
-    pointer-events: none;
-    animation: particleFloat 10s ease-in-out infinite;
+    display: none;
 }
 
 @keyframes particleFloat {
@@ -522,28 +608,88 @@
     text-transform: uppercase;
 }
 
+.section-title-with-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.section-title-with-buttons h3 {
+    margin: 0;
+    flex: 1;
+    min-width: 120px;
+}
+
+.section-alcohol-toggle {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.section-alcohol-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 25px;
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estados de los botones */
+.section-alcohol-btn.inactivo {
+    background: #666;
+    border: 2px solid #666;
+}
+
+.section-alcohol-btn.activo {
+    background: #4a9eff;
+    border: 2px solid #4a9eff;
+    box-shadow: 0 4px 15px rgba(74, 158, 255, 0.5);
+}
+
+
+.section-alcohol-btn .btn-icon {
+    font-size: 1.2rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.section-alcohol-btn .btn-text {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.5px;
+}
+
+.section-alcohol-btn.sin-alcohol-btn .btn-icon {
+    filter: drop-shadow(0 2px 4px rgba(74, 158, 255, 0.5));
+}
+
+.section-alcohol-btn.con-alcohol-btn .btn-icon {
+    filter: drop-shadow(0 2px 4px rgba(255, 107, 157, 0.5));
+}
+
 .section-header.granizados {
-    background: linear-gradient(45deg, #ff6b9d, #ff8fab, #ff6b9d);
-    background-size: 200% 200%;
-    animation: colorShift 4s ease infinite;
+    background: #ff6b9d;
 }
 
 .section-header.cocteles {
-    background: linear-gradient(45deg, #4ecdc4, #6dd5ed, #4ecdc4);
-    background-size: 200% 200%;
-    animation: colorShift 4s ease infinite;
+    background: #4ecdc4;
 }
 
 .section-header.sodas {
-    background: linear-gradient(45deg, #45b7d1, #74b9ff, #45b7d1);
-    background-size: 200% 200%;
-    animation: colorShift 4s ease infinite;
+    background: #45b7d1;
 }
 
 .section-header.casa {
-    background: linear-gradient(45deg, #f9ca24, #fdcb6e, #f9ca24);
-    background-size: 200% 200%;
-    animation: colorShift 4s ease infinite;
+    background: #f9ca24;
     color: #333;
 }
 
@@ -585,26 +731,20 @@
 
 .item-name {
     flex: 1;
-    color: #333;
+    color: #fff;
     font-weight: 500;
 }
 
 .dots {
     flex: 1;
     height: 1px;
-    background: repeating-linear-gradient(
-        to right,
-        #ccc 0px,
-        #ccc 3px,
-        transparent 3px,
-        transparent 6px
-    );
+    background: #666;
     margin: 0 10px;
 }
 
 .price {
-    color: #333;
-    font-weight: 600;
+    color: #ff6b9d;
+    font-weight: 700;
     min-width: 40px;
     text-align: right;
 }
@@ -766,5 +906,301 @@
     
     .account-number {
         font-size: 1rem;
+    }
+}
+
+/* Sabores Flotantes */
+.floating-flavors {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    z-index: 1000;
+    background: #2a2a2a;
+    border: 1px solid #555;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.floating-flavors::before {
+    display: none;
+}
+
+@keyframes floatingPanel {
+    0%, 100% {
+        transform: translateY(-50%) rotateY(0deg);
+        box-shadow: 
+            0 0 30px rgba(0, 255, 255, 0.4),
+            0 0 60px rgba(255, 0, 255, 0.2),
+            inset 0 0 20px rgba(0, 255, 0, 0.1);
+    }
+    50% {
+        transform: translateY(-50%) rotateY(5deg);
+        box-shadow: 
+            0 0 40px rgba(255, 0, 255, 0.5),
+            0 0 80px rgba(0, 255, 0, 0.3),
+            inset 0 0 30px rgba(0, 255, 255, 0.2);
+    }
+}
+
+.floating-title {
+    color: #00ffff;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+    animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+    0% {
+        text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(0, 255, 255, 1), 0 0 30px rgba(255, 0, 255, 0.5);
+    }
+}
+
+.flavor-bubbles {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.flavor-bubble {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, rgba(0, 255, 255, 0.1) 0%, rgba(255, 0, 255, 0.1) 100%);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: bubbleFloat 4s ease-in-out infinite;
+    animation-delay: calc(var(--bubble-index) * 0.5s);
+    position: relative;
+    overflow: hidden;
+}
+
+.flavor-bubble::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.flavor-bubble:hover::before {
+    left: 100%;
+}
+
+.flavor-bubble:nth-child(1) { --bubble-index: 0; }
+.flavor-bubble:nth-child(2) { --bubble-index: 1; }
+.flavor-bubble:nth-child(3) { --bubble-index: 2; }
+.flavor-bubble:nth-child(4) { --bubble-index: 3; }
+.flavor-bubble:nth-child(5) { --bubble-index: 4; }
+.flavor-bubble:nth-child(6) { --bubble-index: 5; }
+
+@keyframes bubbleFloat {
+    0%, 100% {
+        transform: translateX(0px) rotateZ(0deg);
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+    }
+    25% {
+        transform: translateX(3px) rotateZ(1deg);
+        box-shadow: 0 0 15px rgba(255, 0, 255, 0.4);
+    }
+    50% {
+        transform: translateX(0px) rotateZ(0deg);
+        box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+    }
+    75% {
+        transform: translateX(-3px) rotateZ(-1deg);
+        box-shadow: 0 0 15px rgba(255, 255, 0, 0.4);
+    }
+}
+
+.flavor-bubble:hover {
+    transform: translateX(5px) scale(1.05);
+    background: linear-gradient(135deg, rgba(0, 255, 255, 0.2) 0%, rgba(255, 0, 255, 0.2) 100%);
+    border-color: rgba(0, 255, 255, 0.8);
+    box-shadow: 
+        0 0 25px rgba(0, 255, 255, 0.6),
+        0 0 50px rgba(255, 0, 255, 0.4);
+    animation-play-state: paused;
+}
+
+.flavor-icon {
+    font-size: 1.5rem;
+    animation: iconPulse 2s ease-in-out infinite;
+    animation-delay: calc(var(--bubble-index) * 0.3s);
+}
+
+@keyframes iconPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.flavor-name {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+    transition: color 0.3s ease;
+}
+
+.flavor-bubble:hover .flavor-name {
+    color: #00ffff;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}
+
+/* Flavors dentro de la sección */
+.flavors-section {
+    background: rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.flavors-title {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.flavors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    width: 100%;
+}
+
+.flavor-bubble {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.flavor-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+.flavor-bubble:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.flavor-bubble .flavor-icon {
+    font-size: 1.5rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.flavor-bubble .flavor-name {
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.flavor-bubble .flavor-description {
+    font-size: 0.65rem;
+    font-weight: 500;
+    opacity: 0.8;
+    margin-top: 2px;
+    line-height: 1.2;
+    text-align: center;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    .floating-flavors-container {
+        margin: 15px 0;
+        padding: 15px;
+    }
+    
+    .flavors-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 8px;
+        max-width: none;
+    }
+    
+    .flavor-bubble {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .flavor-bubble .flavor-icon {
+        font-size: 1.2rem;
+    }
+    
+    .flavor-bubble .flavor-name {
+        font-size: 0.75rem;
+    }
+    
+    .menu-logo {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .alcohol-toggle {
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+    }
+    
+    .alcohol-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 10px 16px;
+    }
+    
+    .section-title-with-buttons {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+    
+    .section-title-with-buttons h3 {
+        text-align: center;
+    }
+    
+    .section-alcohol-toggle {
+        flex-direction: row;
+        gap: 8px;
+        justify-content: center;
+    }
+    
+    .section-alcohol-btn {
+        padding: 8px 12px;
     }
 }

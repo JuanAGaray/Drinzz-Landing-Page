@@ -24,76 +24,26 @@
             <div class="menu-logo">
                 <img src="../assets/icon.png" alt="Drinzz" class="logo-icon">
             </div>
-            <div class="menu-subtitle">
-                <span>bebidas</span>
-                <div class="alcohol-badge" id="alcohol-badge">sin alcohol</div>
-            </div>
-            <div class="menu-toggle">
-                <button class="toggle-btn active" data-type="sin-alcohol">Sin Alcohol</button>
-                <button class="toggle-btn" data-type="con-alcohol">Con Alcohol</button>
-            </div>
         </header>
 
-        <!-- Menu Grid - Sin Alcohol -->
-        <div class="menu-grid" id="menu-sin-alcohol">
-            <!-- Granizados -->
-            <div class="menu-section">
-                <div class="section-header granizados">
-                    <h3>Granizados</h3>
-                </div>
-                <div class="section-content">
-                    <div class="menu-item">
-                        <span class="item-name">Granizado Mini (6oz)</span>
-                        <span class="dots"></span>
-                        <span class="price">5k</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Granizado Pequeño (9oz)</span>
-                        <span class="dots"></span>
-                        <span class="price">7k</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Granizado Mediano (12oz)</span>
-                        <span class="dots"></span>
-                        <span class="price">11k</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Granizado Grande (16oz)</span>
-                        <span class="dots"></span>
-                        <span class="price">14k</span>
-                    </div>
-                    <div class="menu-item highlight">
-                        <span class="item-name">Pesera 4 personas</span>
-                        <span class="dots"></span>
-                        <span class="price">44k</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Sabores -->
-            <div class="menu-section">
-                <div class="section-header cocteles">
-                    <h3>Sabores</h3>
-                </div>
-                <div class="section-content">
-                    <div class="menu-item">
-                        <div class="item-details">
-                            <span class="item-name">Maracumango</span>
-                            <span class="item-ingredients">Maracuyá, Mango</span>
-                        </div>
-                        <span class="dots"></span>
-                        <span class="price">-</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Menu Grid - Con Alcohol -->
-        <div class="menu-grid" id="menu-con-alcohol" style="display: none;">
+        <div class="menu-grid" id="menu-con-alcohol">
             <!-- Granizados -->
             <div class="menu-section">
                 <div class="section-header granizados">
-                    <h3>Granizados</h3>
+                    <div class="section-title-with-buttons">
+                        <h3 id="granizados-title-con">Granizados Con Alcohol</h3>
+                        <div class="section-alcohol-toggle">
+                            <button class="section-alcohol-btn sin-alcohol-btn" data-type="sin-alcohol">
+                                <span class="btn-icon">🥤</span>
+                                <span class="btn-text">Sin Alcohol</span>
+                            </button>
+                            <button class="section-alcohol-btn con-alcohol-btn active" data-type="con-alcohol">
+                                <span class="btn-icon">🍹</span>
+                                <span class="btn-text">Con Alcohol</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div class="section-content">
                     <div class="menu-item">
@@ -137,53 +87,109 @@
                         <span class="price">48k</span>
                     </div>
                 </div>
+                
+                <!-- Sabores dentro de la sección -->
+                <div class="flavors-section">
+                    <div class="flavors-title">Sabores Disponibles</div>
+                    <div class="flavors-grid">
+                        <div class="flavor-bubble" data-flavor="mango-biche">
+                            <div class="flavor-header">
+                                <span class="flavor-icon">🍹</span>
+                                <span class="flavor-name">Mango Biche</span>
+                            </div>
+                            <span class="flavor-description">Mango biche, Limón + Tequila, Vodka</span>
+                        </div>
+                        <div class="flavor-bubble" data-flavor="bonbonbum">
+                            <div class="flavor-header">
+                                <span class="flavor-icon">🍓</span>
+                                <span class="flavor-name">Bonbonbum</span>
+                            </div>
+                            <span class="flavor-description">Frutos rojos + Whisky</span>
+                        </div>
+                        <div class="flavor-bubble" data-flavor="tussy">
+                            <div class="flavor-header">
+                                <span class="flavor-icon">🍒</span>
+                                <span class="flavor-name">Tussy</span>
+                            </div>
+                            <span class="flavor-description">Cereza, Limón + Ron, Vodka</span>
+                        </div>
+                        <div class="flavor-bubble" data-flavor="four-loko">
+                            <div class="flavor-header">
+                                <span class="flavor-icon">🔵</span>
+                                <span class="flavor-name">Four Loko</span>
+                            </div>
+                            <span class="flavor-description">Frutos azules + Vodka, Champaña</span>
+                        </div>
+                        <div class="flavor-bubble" data-flavor="baileys">
+                            <div class="flavor-header">
+                                <span class="flavor-icon">☕</span>
+                                <span class="flavor-name">Baileys</span>
+                            </div>
+                            <span class="flavor-description">Café, Chocolate + Baileys</span>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
 
-            <!-- Sabores -->
+        <!-- Menu Grid - Sin Alcohol -->
+        <div class="menu-grid" id="menu-sin-alcohol" style="display: none;">
+            <!-- Granizados -->
             <div class="menu-section">
-                <div class="section-header cocteles">
-                    <h3>Sabores</h3>
+                <div class="section-header granizados">
+                    <div class="section-title-with-buttons">
+                        <h3 id="granizados-title">Granizados Sin Alcohol</h3>
+                        <div class="section-alcohol-toggle">
+                            <button class="section-alcohol-btn sin-alcohol-btn active" data-type="sin-alcohol">
+                                <span class="btn-icon">🥤</span>
+                                <span class="btn-text">Sin Alcohol</span>
+                            </button>
+                            <button class="section-alcohol-btn con-alcohol-btn" data-type="con-alcohol">
+                                <span class="btn-icon">🍹</span>
+                                <span class="btn-text">Con Alcohol</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div class="section-content">
                     <div class="menu-item">
-                        <div class="item-details">
-                            <span class="item-name">Mango Biche</span>
-                            <span class="item-ingredients">Mango biche, Limón, Tequila, Vodka</span>
-                        </div>
+                        <span class="item-name">Granizado Mini (6oz)</span>
                         <span class="dots"></span>
-                        <span class="price">-</span>
+                        <span class="price">5k</span>
                     </div>
                     <div class="menu-item">
-                        <div class="item-details">
-                            <span class="item-name">Bonbonbum</span>
-                            <span class="item-ingredients">Frutos rojos, Whisky</span>
-                        </div>
+                        <span class="item-name">Granizado Pequeño (9oz)</span>
                         <span class="dots"></span>
-                        <span class="price">-</span>
+                        <span class="price">7k</span>
                     </div>
                     <div class="menu-item">
-                        <div class="item-details">
-                            <span class="item-name">Tussy</span>
-                            <span class="item-ingredients">Cereza, Limón, Ron, Vodka</span>
-                        </div>
+                        <span class="item-name">Granizado Mediano (12oz)</span>
                         <span class="dots"></span>
-                        <span class="price">-</span>
+                        <span class="price">11k</span>
                     </div>
                     <div class="menu-item">
-                        <div class="item-details">
-                            <span class="item-name">Four Loko Blue</span>
-                            <span class="item-ingredients">Frutos azules, Vodka, Champaña</span>
-                        </div>
+                        <span class="item-name">Granizado Grande (16oz)</span>
                         <span class="dots"></span>
-                        <span class="price">-</span>
+                        <span class="price">14k</span>
                     </div>
-                    <div class="menu-item">
-                        <div class="item-details">
-                            <span class="item-name">Baileys Slush</span>
-                            <span class="item-ingredients">Café, Chocolate, Baileys</span>
-                        </div>
+                    <div class="menu-item highlight">
+                        <span class="item-name">Pesera 4 personas</span>
                         <span class="dots"></span>
-                        <span class="price">-</span>
+                        <span class="price">44k</span>
+                    </div>
+                </div>
+                
+                <!-- Sabores dentro de la sección -->
+                <div class="flavors-section">
+                    <div class="flavors-title">Sabores Disponibles</div>
+                    <div class="flavors-grid">
+                        <div class="flavor-bubble" data-flavor="maracumango">
+                            <div class="flavor-header">
+                                <span class="flavor-icon">🥭</span>
+                                <span class="flavor-name">Maracumango</span>
+                            </div>
+                            <span class="flavor-description">Sin Alcohol</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -191,6 +197,7 @@
 
     </div>
 
-    <script src="../script.js"></script>
+    <!-- <script src="../script.js"></script> -->
+    <script src="../button-fix.js"></script>
 </body>
 </html>
